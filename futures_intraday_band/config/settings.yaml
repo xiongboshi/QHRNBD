@@ -1,0 +1,123 @@
+# ============================================================
+# 期货日内波段回测系统 - 配置文件（三层时间框架版）
+# ============================================================
+
+# ---------------------- 回测基本信息 ----------------------
+backtest:
+  start_date: "2025-07-01"              # 回测开始日期
+  end_date: "2026-06-29"                # 回测结束日期
+  initial_capital: 100_000              # 初始资金（元）
+  symbol: "rb888"                       # 品种代码（螺纹钢连续）
+  data_freq: "15min"                    # K线频率: 1min, 5min, 15min, 30min, 60min
+
+# ---------------------- 数据来源 ----------------------
+data_source: "tqsdk"                    # local / tqsdk / sample
+default_data_source: "tqsdk"            # 默认数据源
+
+# 天勤 TqSdk 配置
+tqsdk:
+  username: "17508266621"               # 天勤账号
+  password: "123520"                    # 天勤密码
+
+# ---------------------- 合约规格 ----------------------
+contract:
+  # 螺纹钢 rb
+  rb:
+    multiplier: 10                      # 每手吨数
+    min_tick: 1                         # 最小变动价位（元/吨）
+    tick_value: 10                      # 每跳价值（元）= multiplier * min_tick
+    margin_rate: 0.08                   # 保证金比例 8%
+  # 铁矿石 i
+  i:
+    multiplier: 100
+    min_tick: 0.5
+    tick_value: 50
+    margin_rate: 0.09
+  # 甲醇 MA
+  MA:
+    multiplier: 10
+    min_tick: 1
+    tick_value: 10
+    margin_rate: 0.07
+
+# ---------------------- 手续费 ----------------------
+commission:
+  rb:
+    open_ratio: 0.0001                  # 开仓手续费率（万分之1）
+    close_ratio: 0.0001                 # 平仓手续费率
+    close_today_ratio: 0.0001           # 平今仓手续费率
+  i:
+    open_ratio: 0.0001
+    close_ratio: 0.0001
+    close_today_ratio: 0.0002           # 铁矿石平今贵一倍
+  MA:
+    open_ratio: 0.0001
+    close_ratio: 0.0001
+    close_today_ratio: 0.0001
+
+# ---------------------- 滑点设置 ----------------------
+slippage:
+  mode: "fixed"                         # fixed / ratio
+  fixed_ticks: 1                        # 固定滑点（跳数）
+  ratio: 0.0001                         # 比例滑点
+
+# ---------------------- 日内交易限制 ----------------------
+intraday:
+  max_positions_per_day: 3              # 每天最大交易次数
+  close_at_market: "14:55"              # 收盘前强制平仓时间
+  min_holding_bars: 2                   # 最小持仓K线数
+
+# ---------------------- 风险管理 ----------------------
+risk:
+  max_position_size: 20                 # 最大持仓手数
+  max_drawdown: 0.15                    # 最大回撤比例 15%（超过停止交易）
+  fixed_contract_size: 1                # 固定每笔交易手数
+  use_fixed_size: true                  # true=固定手数, false=资金管理
+  max_daily_loss: 0                     # 日内最大亏损限制（0=不限制）
+  max_consecutive_loss: 0               # 最大连续亏损次数（0=不限制）
+
+# ---------------------- 动态止损 ----------------------
+trailing_stop:
+  enabled: false                        # 是否启用追踪止损
+  activation_pct: 0.005                 # 盈利 0.5% 后启动追踪
+  trailing_distance: 0.003              # 追踪回撤距离 0.3%
+
+# ============================================================
+# 策略参数（PBX + U形 - 三层时间框架版）
+# ============================================================
+strategy_params:
+  # --- PBX 瀑布线参数 ---
+  pbx_periods: [4, 6, 9, 13, 18, 24]      # PBX 各周期
+  pbx_trend_bars: 100                      # 趋势确认持续K线数
+
+  # --- U形形态参数 ---
+  lookback: 8                            # U形回溯窗口
+  recovery_ratio: 0.3                    # 反弹幅度比例阈值（越低越敏感）
+  min_drop_pct: 0.002                    # 最小左半边跌幅 0.2%
+  u_shape_smooth: 3                      # 形态平滑窗口
+
+  # --- 三层框架：1小时线过滤参数 ---
+  use_hour_filter: true                  # 是否启用1小时线过滤
+  hour_trend_bars: 100                     # 1小时趋势确认K线数
+
+  # --- 过滤器参数 ---
+  volume_confirm: false                  # 是否用成交量确认（模拟数据关闭）
+  volume_factor: 1.2                     # 成交量放大倍数
+  use_rsi_filter: false                  # RSI极端值过滤（模拟数据关闭）
+  rsi_oversold: 30                       # 超卖阈值（多头）
+  rsi_overbought: 70                     # 超买阈值（空头）
+  pbx_deviation_max: 0.03                # 价格与PBX_4最大偏离 3%
+
+  # --- 止损止盈 ---
+  use_atr_stop: true                     # ATR止损
+  atr_period: 14                         # ATR周期
+  stop_loss_atr: 1.5                     # 止损ATR倍数
+  take_profit_atr: 3.0                   # 止盈ATR倍数
+  use_trailing_stop: false               # 启用追踪止损（由引擎控制）
+
+  # --- 仓位管理 ---
+  fixed_contracts: 1                     # 固定手数
+  use_dynamic_sizing: false              # 动态仓位
+  risk_per_trade: 0.005                  # 每笔风险资金比例 0.5%
+  max_positions_per_day: 3               # 每日最大交易次数
+  min_holding_bars: 2                    # 最小持仓K线数

@@ -1,0 +1,126 @@
+2026-06-29 13:38:19 | INFO  | 数据加载完成: 5000 根K线, 0 ~ 4999
+2026-06-29 13:40:51 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 13:40:51 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 13:40:52 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 10, 'recovery_ratio': 0.4, 'min_drop_pct': 0.003, 'u_shape_smooth': 3, 'volume_confirm': True, 'volume_factor': 1.2, 'use_rsi_filter': True, 'rsi_oversold': 35, 'rsi_overbought': 65, 'pbx_deviation_max': 0.02, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 13:40:52 | INFO  | 共处理 5000 根K线
+2026-06-29 13:40:52 | INFO  | 回测完成
+2026-06-29 13:41:56 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 13:41:56 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 13:41:56 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 10, 'recovery_ratio': 0.4, 'min_drop_pct': 0.003, 'u_shape_smooth': 3, 'volume_confirm': True, 'volume_factor': 1.2, 'use_rsi_filter': True, 'rsi_oversold': 35, 'rsi_overbought': 65, 'pbx_deviation_max': 0.02, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 13:41:57 | INFO  | 共处理 5000 根K线
+2026-06-29 13:41:57 | INFO  | 回测完成
+2026-06-29 13:41:57 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 13:47:51 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 13:47:51 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 13:47:52 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 13:47:52 | INFO  | 共处理 5000 根K线
+2026-06-29 13:47:52 | INFO  | 回测完成
+2026-06-29 13:47:52 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:03:55 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:03:55 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:03:56 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:03:56 | INFO  | 共处理 5000 根K线
+2026-06-29 14:03:56 | INFO  | 回测完成
+2026-06-29 14:03:56 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:06:11 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:06:11 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:06:11 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:06:12 | INFO  | 共处理 5000 根K线
+2026-06-29 14:06:12 | INFO  | 回测完成
+2026-06-29 14:06:12 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:12:35 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:12:35 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:12:36 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:12:36 | INFO  | 共处理 5000 根K线
+2026-06-29 14:12:36 | INFO  | 回测完成
+2026-06-29 14:12:36 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:26:33 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:26:33 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:26:34 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:26:34 | INFO  | 共处理 5000 根K线
+2026-06-29 14:26:34 | INFO  | 回测完成
+2026-06-29 14:26:34 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:27:41 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:27:41 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:27:42 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:27:42 | INFO  | 共处理 5000 根K线
+2026-06-29 14:27:42 | INFO  | 回测完成
+2026-06-29 14:27:43 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:29:02 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:29:02 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2024-01-30 13:38:00
+2026-06-29 14:29:03 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:29:03 | INFO  | 共处理 5000 根K线
+2026-06-29 14:29:03 | INFO  | 回测完成
+2026-06-29 14:29:04 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:32:47 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2025-01-23 14:00:00
+2026-06-29 14:32:47 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2025-01-23 14:00:00
+2026-06-29 14:32:48 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:32:48 | INFO  | 共处理 5000 根K线
+2026-06-29 14:32:48 | INFO  | 回测完成
+2026-06-29 14:32:48 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:34:39 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2025-01-23 14:00:00
+2026-06-29 14:34:39 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2025-01-23 14:00:00
+2026-06-29 14:34:40 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:34:40 | INFO  | 共处理 5000 根K线
+2026-06-29 14:34:40 | INFO  | 回测完成
+2026-06-29 14:34:40 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:36:17 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2025-01-23 14:00:00
+2026-06-29 14:36:17 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2025-01-23 14:00:00
+2026-06-29 14:36:18 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:36:18 | INFO  | 共处理 5000 根K线
+2026-06-29 14:36:18 | INFO  | 回测完成
+2026-06-29 14:36:19 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:37:21 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2025-01-23 14:00:00
+2026-06-29 14:37:21 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2025-01-23 14:00:00
+2026-06-29 14:37:21 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:37:22 | INFO  | 共处理 5000 根K线
+2026-06-29 14:37:22 | INFO  | 回测完成
+2026-06-29 14:37:22 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:39:01 | INFO  | 数据加载完成: 5000 根K线, 2024-01-02 09:00:00 ~ 2025-01-23 14:00:00
+2026-06-29 14:39:01 | INFO  | 回测时段: 2024-01-02 09:00:00 ~ 2025-01-23 14:00:00
+2026-06-29 14:39:02 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:39:02 | INFO  | 共处理 5000 根K线
+2026-06-29 14:39:02 | INFO  | 回测完成
+2026-06-29 14:39:02 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:40:45 | INFO  | 数据加载完成: 5000 根K线, 2025-07-30 01:45:00 ~ 2026-06-29 06:30:00
+2026-06-29 14:40:45 | INFO  | 回测时段: 2025-07-30 01:45:00 ~ 2026-06-29 06:30:00
+2026-06-29 14:40:45 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:40:45 | INFO  | 共处理 5000 根K线
+2026-06-29 14:40:45 | INFO  | 回测完成
+2026-06-29 14:40:45 | INFO  | 交易明细已保存: results\report.csv
+2026-06-29 14:40:46 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:43:51 | INFO  | 数据加载完成: 5000 根K线, 2025-07-30 01:45:00 ~ 2026-06-29 06:30:00
+2026-06-29 14:43:51 | INFO  | 回测时段: 2025-07-30 01:45:00 ~ 2026-06-29 06:30:00
+2026-06-29 14:43:52 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:43:52 | INFO  | 共处理 5000 根K线
+2026-06-29 14:43:52 | INFO  | 回测完成
+2026-06-29 14:43:52 | INFO  | 交易明细已保存: results\report.csv
+2026-06-29 14:43:52 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:44:57 | INFO  | 数据加载完成: 5000 根K线, 2025-07-30 02:00:00 ~ 2026-06-29 06:45:00
+2026-06-29 14:44:57 | INFO  | 回测时段: 2025-07-30 02:00:00 ~ 2026-06-29 06:45:00
+2026-06-29 14:44:58 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:44:58 | INFO  | 共处理 5000 根K线
+2026-06-29 14:44:58 | INFO  | 回测完成
+2026-06-29 14:44:58 | INFO  | 交易明细已保存: results\report.csv
+2026-06-29 14:44:59 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:46:17 | INFO  | 数据加载完成: 5000 根K线, 2025-07-30 02:00:00 ~ 2026-06-29 06:45:00
+2026-06-29 14:46:17 | INFO  | 回测时段: 2025-07-30 02:00:00 ~ 2026-06-29 06:45:00
+2026-06-29 14:46:18 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:46:18 | INFO  | 共处理 5000 根K线
+2026-06-29 14:46:18 | INFO  | 回测完成
+2026-06-29 14:46:18 | INFO  | 交易明细已保存: results\report.csv
+2026-06-29 14:46:18 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:48:50 | INFO  | 数据加载完成: 5000 根K线, 2025-07-30 02:00:00 ~ 2026-06-29 06:45:00
+2026-06-29 14:48:50 | INFO  | 回测时段: 2025-07-30 02:00:00 ~ 2026-06-29 06:45:00
+2026-06-29 14:48:50 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:48:50 | INFO  | 共处理 5000 根K线
+2026-06-29 14:48:50 | INFO  | 回测完成
+2026-06-29 14:48:50 | INFO  | 交易明细已保存: results\report.csv
+2026-06-29 14:48:51 | INFO  | 回测报告已保存: results\backtest_report.png
+2026-06-29 14:54:48 | INFO  | 数据加载完成: 5000 根K线, 2025-07-30 02:00:00 ~ 2026-06-29 06:45:00
+2026-06-29 14:54:48 | INFO  | 回测时段: 2025-07-30 02:00:00 ~ 2026-06-29 06:45:00
+2026-06-29 14:54:48 | INFO  | 策略初始化: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+2026-06-29 14:54:48 | INFO  | 共处理 5000 根K线
+2026-06-29 14:54:48 | INFO  | 回测完成
+2026-06-29 14:54:48 | INFO  | 交易明细已保存: results\report.csv
+2026-06-29 14:54:49 | INFO  | 回测报告已保存: results\backtest_report.png

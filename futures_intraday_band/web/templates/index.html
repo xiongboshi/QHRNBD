@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日内波段回测系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: #0a0e17;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 顶部导航 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #1a2332;
+            margin-bottom: 25px;
+        }
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f0b90b, #f5d100);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .subtitle {
+            font-size: 13px;
+            color: #6a7a8e;
+        }
+        .header .status {
+            font-size: 12px;
+            color: #6a7a8e;
+            padding: 4px 12px;
+            border-radius: 12px;
+            background: #0d1421;
+            border: 1px solid #1a2332;
+        }
+        .header .status.ready { color: #00c853; border-color: #00c853; }
+        .header .status.running { color: #f0b90b; border-color: #f0b90b; }
+        .header .status.done { color: #3498db; border-color: #3498db; }
+        
+        /* 控制面板 */
+        .control-panel {
+            background: #111927;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #1a2332;
+            margin-bottom: 25px;
+        }
+        .control-panel .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: end;
+        }
+        .control-panel .form-group {
+            flex: 1;
+            min-width: 150px;
+        }
+        .control-panel .form-group.flex-05 {
+            flex: 0.5;
+            min-width: 120px;
+        }
+        .control-panel label {
+            display: block;
+            font-size: 11px;
+            color: #6a7a8e;
+            margin-bottom: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .control-panel select,
+        .control-panel input {
+            width: 100%;
+            padding: 10px 14px;
+            background: #0d1421;
+            border: 1px solid #1a2332;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .control-panel select:focus,
+        .control-panel input:focus {
+            outline: none;
+            border-color: #f0b90b;
+            box-shadow: 0 0 0 3px rgba(240, 185, 11, 0.15);
+        }
+        .control-panel select option {
+            background: #111927;
+        }
+        .btn {
+            padding: 10px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #f0b90b, #d4a008);
+            color: #0a0e17;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(240, 185, 11, 0.3);
+        }
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* 加载状态 */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: #f0b90b;
+        }
+        .loading .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #1a2332;
+            border-top-color: #f0b90b;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 15px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 回测结果 */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .stat-card {
+            background: #111927;
+            border-radius: 10px;
+            padding: 14px 16px;
+            border: 1px solid #1a2332;
+            text-align: center;
+        }
+        .stat-card .label {
+            font-size: 10px;
+            color: #6a7a8e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .stat-card .value {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+        .stat-card .value.positive { color: #00c853; }
+        .stat-card .value.negative { color: #ff1744; }
+        .stat-card .value.neutral { color: #f0b90b; }
+        
+        /* K线图容器 - 全屏风格 */
+        .chart-container {
+            background: #111927;
+            border-radius: 12px;
+            border: 1px solid #1a2332;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+        .chart-container .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid #1a2332;
+            background: #0d1421;
+        }
+        .chart-container .chart-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+        .chart-container .chart-title .badge {
+            background: #1a2332;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 400;
+            color: #6a7a8e;
+            margin-left: 8px;
+        }
+        .chart-container .chart-body {
+            width: 100%;
+            height: 560px;
+            background: #0a0e17;
+        }
+        .chart-container .chart-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* 权益曲线 */
+        #equityChart {
+            width: 100%;
+            height: 280px;
+        }
+        
+        /* 交易列表 */
+        .trade-table-wrap {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .trade-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .trade-table th {
+            text-align: left;
+            padding: 10px 12px;
+            background: #0d1421;
+            color: #6a7a8e;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        .trade-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #1a2332;
+        }
+        .trade-table .buy { color: #e74c3c; }
+        .trade-table .sell { color: #2ecc71; }
+        .trade-table .profit { color: #00c853; }
+        .trade-table .loss { color: #ff1744; }
+        
+        .direction-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .direction-tag.long { background: rgba(231, 76, 60, 0.2); color: #e74c3c; }
+        .direction-tag.short { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+        
+        .hidden { display: none !important; }
+        .mt-15 { margin-top: 15px; }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .control-panel .row {
+                flex-direction: column;
+            }
+            .control-panel .form-group {
+                min-width: 100%;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .results-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .chart-container .chart-body {
+                height: 380px;
+            }
+        }
+        
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #0d1421; }
+        ::-webkit-scrollbar-thumb { background: #1a2332; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #24344a; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航 -->
+        <div class="header">
+            <div>
+                <!-- <h1>📊 日内波段回测</h1> -->
+                <span class="subtitle">三层时间框架 · PBX瀑布线 + U形形态</span>
+            </div>
+            <div class="status ready" id="statusBadge">● 就绪</div>
+        </div>
+        
+        <!-- 控制面板 -->
+        <div class="control-panel">
+            <div class="row">
+                <div class="form-group">
+                    <label>📈 策略</label>
+                    <select id="strategySelect">
+                        {% for name, info in strategies.items() %}
+                        <option value="{{ name }}">{{ info.desc }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>📊 品种</label>
+                    <select id="symbolSelect">
+                        <option value="rb888">螺纹钢 (rb888)</option>
+                        <option value="i888">铁矿石 (i888)</option>
+                        <option value="MA888">甲醇 (MA888)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>⏱️ K线周期</label>
+                    <select id="freqSelect">
+                        <option value="15min">15分钟</option>
+                        <option value="30min">30分钟</option>
+                        <option value="60min">60分钟</option>
+                        <option value="1d">日线</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>📅 开始日期</label>
+                    <input type="date" id="startDate" value="2025-07-01">
+                </div>
+                <div class="form-group">
+                    <label>📅 结束日期</label>
+                    <input type="date" id="endDate" value="2026-06-29">
+                </div>
+                <div class="form-group">
+                    <label>📡 数据源</label>
+                    <select id="sourceSelect">
+                        <option value="tqsdk">天勤 (TqSdk)</option>
+                        <option value="local">本地文件</option>
+                        <option value="sample">模拟数据</option>
+                    </select>
+                </div>
+                <div class="form-group flex-05">
+                    <label>&nbsp;</label>
+                    <!-- <button class="btn btn-primary" id="runBtn" onclick="runBacktest()">
+                        ▶ 执行回测
+                    </button> -->
+                    <button class="btn btn-primary" id="runBtn" onclick="runBacktest()">
+                        ▶ 
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 加载状态 -->
+        <div class="loading" id="loadingDiv">
+            <div class="spinner"></div>
+            <div>正在执行回测，请稍候...</div>
+            <div style="font-size:12px; color:#6a7a8e; margin-top:8px;" id="loadingDetail">加载数据中</div>
+        </div>
+        
+        <!-- 结果区域 -->
+        <div id="resultsArea" class="hidden">
+            <!-- 统计卡片 -->
+            <div class="results-grid" id="statsGrid"></div>
+            
+            <!-- K线图 -->
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">
+                        📈 K线图 &amp; 进出场标记
+                        <span class="badge" id="klineInfo">加载中...</span>
+                    </div>
+                    <div style="display:flex;gap:8px;font-size:12px;color:#6a7a8e;">
+                        <span>🟢 MA5</span>
+                        <span>🔵 MA10</span>
+                        <span>🟣 MA20</span>
+                        <span style="color:#e74c3c;">▲ 多</span>
+                        <span style="color:#2ecc71;">▼ 空</span>
+                    </div>
+                </div>
+                <div class="chart-body" id="klineContainer">
+                    <div style="text-align:center;padding:50px;color:#6a7a8e;">加载K线图中...</div>
+                </div>
+            </div>
+            
+            <!-- 权益曲线 -->
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">
+                        📊 权益曲线
+                        <span class="badge" id="equityInfo">加载中...</span>
+                    </div>
+                </div>
+                <div class="chart-body" style="height:280px;">
+                    <div id="equityChart" style="width:100%;height:100%;"></div>
+                </div>
+            </div>
+            
+            <!-- 交易明细 -->
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">
+                        📋 交易明细
+                        <span class="badge" id="tradeCount">0 笔</span>
+                    </div>
+                </div>
+                <div style="padding:12px 20px;">
+                    <div class="trade-table-wrap" id="tradeTableWrap">
+                        <table class="trade-table">
+                            <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>方向</th>
+                                    <th>价格</th>
+                                    <th>手数</th>
+                                    <th>盈亏</th>
+                                    <th>手续费</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tradeTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <script>
+        let equityChart = null;
+        
+        // 初始化图表
+        document.addEventListener('DOMContentLoaded', function() {
+            equityChart = echarts.init(document.getElementById('equityChart'));
+            window.addEventListener('resize', function() {
+                equityChart && equityChart.resize();
+            });
+        });
+        
+        // 执行回测
+        async function runBacktest() {
+            const btn = document.getElementById('runBtn');
+            const loadingDiv = document.getElementById('loadingDiv');
+            const resultsArea = document.getElementById('resultsArea');
+            const statusBadge = document.getElementById('statusBadge');
+            
+            btn.disabled = true;
+            btn.textContent = '⏳ ...';
+            loadingDiv.style.display = 'block';
+            resultsArea.classList.add('hidden');
+            statusBadge.className = 'status running';
+            statusBadge.textContent = '● 运行中...';
+            
+            try {
+                const data = {
+                    strategy: document.getElementById('strategySelect').value,
+                    symbol: document.getElementById('symbolSelect').value,
+                    freq: document.getElementById('freqSelect').value,
+                    start_date: document.getElementById('startDate').value,
+                    end_date: document.getElementById('endDate').value,
+                    source: document.getElementById('sourceSelect').value,
+                };
+                
+                const response = await fetch('/api/run', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+                
+                const result = await response.json();
+                
+                if (!result.success) {
+                    alert('回测失败: ' + result.error);
+                    statusBadge.className = 'status';
+                    statusBadge.textContent = '❌ 失败';
+                    return;
+                }
+                
+                // 显示结果
+                displayResults(result.data);
+                resultsArea.classList.remove('hidden');
+                statusBadge.className = 'status done';
+                statusBadge.textContent = '● 回测完成';
+                
+                // 加载K线图
+                await loadKlineChart();
+                
+            } catch (err) {
+                alert('请求失败: ' + err.message);
+                statusBadge.className = 'status';
+                statusBadge.textContent = '❌ 失败';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '▶ ';
+                loadingDiv.style.display = 'none';
+            }
+        }
+        
+        // 加载K线图（lightweight-charts iframe）
+        async function loadKlineChart() {
+            try {
+                const response = await fetch('/api/kline_chart');
+                const result = await response.json();
+                const container = document.getElementById('klineContainer');
+                if (result.html) {
+                    container.innerHTML = result.html;
+                }
+            } catch (err) {
+                console.error('加载K线图失败:', err);
+            }
+        }
+        
+        // 显示结果
+        function displayResults(data) {
+            const summary = data.summary || {};
+            
+            // 统计卡片
+            const statsGrid = document.getElementById('statsGrid');
+            const cards = [
+                { label: '总收益率', value: (summary.return_rate || 0).toFixed(2) + '%', 
+                  cls: (summary.return_rate || 0) >= 0 ? 'positive' : 'negative' },
+                { label: '最终权益', value: '¥' + (summary.final_equity || 0).toFixed(2), 
+                  cls: 'neutral' },
+                { label: '总交易', value: summary.total_trades || 0, 
+                  cls: 'neutral' },
+                { label: '胜率', value: (summary.win_rate || 0).toFixed(2) + '%', 
+                  cls: (summary.win_rate || 0) >= 40 ? 'positive' : 'neutral' },
+                { label: '盈亏比', value: (summary.profit_factor || 0).toFixed(2), 
+                  cls: (summary.profit_factor || 0) >= 1 ? 'positive' : 'negative' },
+                { label: '最大回撤', value: (summary.max_drawdown || 0).toFixed(2) + '%', 
+                  cls: 'negative' },
+                { label: '夏普比率', value: (summary.sharpe_ratio || 0).toFixed(2), 
+                  cls: (summary.sharpe_ratio || 0) >= 1 ? 'positive' : 'neutral' },
+                { label: '总手续费', value: '¥' + (summary.total_commission || 0).toFixed(2), 
+                  cls: 'neutral' },
+            ];
+            
+            statsGrid.innerHTML = cards.map(c => `
+                <div class="stat-card">
+                    <div class="label">${c.label}</div>
+                    <div class="value ${c.cls}">${c.value}</div>
+                </div>
+            `).join('');
+            
+            // 权益曲线
+            renderEquityChart(data);
+            
+            // 交易明细
+            renderTrades(data.trades || []);
+            
+            // 更新信息
+            document.getElementById('klineInfo').textContent = 
+                `共 ${data.kline_data ? data.kline_data.length : 0} 根K线`;
+            document.getElementById('equityInfo').textContent = 
+                `最终权益 ¥${(summary.final_equity || 0).toFixed(2)}`;
+            document.getElementById('tradeCount').textContent = 
+                `${(data.trades || []).length} 笔`;
+        }
+        
+        // 渲染权益曲线（ECharts）
+        function renderEquityChart(data) {
+            const equity = data.equity_curve || [];
+            
+            if (equity.length === 0) {
+                equityChart.setOption({
+                    title: { text: '无数据', left: 'center', top: 'center', textStyle: { color: '#6a7a8e' } }
+                });
+                return;
+            }
+            
+            const dates = equity.map(d => d.time);
+            const values = equity.map(d => d.equity);
+            const initCap = values[0] || 100000;
+            
+            let maxVal = values[0];
+            const drawdowns = values.map(v => {
+                maxVal = Math.max(maxVal, v);
+                return ((v - maxVal) / maxVal * 100);
+            });
+            
+            const option = {
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: function(params) {
+                        const p = params[0];
+                        const idx = p.dataIndex;
+                        return `<div style="font-weight:600;">${p.axisValue}</div>
+                                <div>权益: ¥${p.value.toFixed(2)}</div>
+                                <div>回撤: ${drawdowns[idx].toFixed(2)}%</div>`;
+                    }
+                },
+                legend: {
+                    data: ['权益', '回撤'],
+                    textStyle: { color: '#e0e0e0' }
+                },
+                grid: { left: '5%', right: '5%', top: '12%', bottom: '10%' },
+                xAxis: {
+                    type: 'category',
+                    data: dates,
+                    axisLabel: { 
+                        color: '#6a7a8e',
+                        formatter: function(v) { return v.substring(5, 10); },
+                        interval: Math.floor(dates.length / 15)
+                    },
+                    axisLine: { lineStyle: { color: '#1a2332' } }
+                },
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: '权益 (¥)',
+                        splitLine: { lineStyle: { color: '#0d1421' } },
+                        axisLabel: { color: '#6a7a8e' }
+                    },
+                    {
+                        type: 'value',
+                        name: '回撤 (%)',
+                        splitLine: { show: false },
+                        axisLabel: { color: '#6a7a8e' }
+                    }
+                ],
+                series: [
+                    {
+                        name: '权益',
+                        type: 'line',
+                        data: values,
+                        smooth: true,
+                        lineStyle: { color: '#f0b90b', width: 2 },
+                        areaStyle: { color: 'rgba(240, 185, 11, 0.1)' },
+                        markLine: {
+                            data: [{ yAxis: initCap, label: { formatter: '初始资金', color: '#6a7a8e' } }],
+                            lineStyle: { color: '#6a7a8e', type: 'dashed' }
+                        }
+                    },
+                    {
+                        name: '回撤',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: drawdowns,
+                        smooth: true,
+                        lineStyle: { color: '#ff1744', width: 1 },
+                        areaStyle: { color: 'rgba(255, 23, 68, 0.1)' }
+                    }
+                ]
+            };
+            
+            equityChart.setOption(option);
+            equityChart.resize();
+        }
+        
+        // 渲染交易明细
+        function renderTrades(trades) {
+            const tbody = document.getElementById('tradeTableBody');
+            
+            if (trades.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:#6a7a8e; padding:30px;">暂无交易记录</td></tr>';
+                return;
+            }
+            
+            const sorted = [...trades].reverse();
+            
+            tbody.innerHTML = sorted.map(t => {
+                const sideCls = t.side === 'buy' ? 'buy' : 'sell';
+                const sideLabel = t.side === 'buy' ? '🟢 做多' : '🔴 做空';
+                const pnlCls = t.pnl >= 0 ? 'profit' : 'loss';
+                const pnlLabel = t.pnl >= 0 ? `+${t.pnl.toFixed(2)}` : t.pnl.toFixed(2);
+                
+                return `<tr>
+                    <td>${t.time}</td>
+                    <td><span class="direction-tag ${t.side === 'buy' ? 'long' : 'short'}">${sideLabel}</span></td>
+                    <td>${t.price.toFixed(1)}</td>
+                    <td>${t.volume}</td>
+                    <td class="${pnlCls}">${pnlLabel}</td>
+                    <td>${(t.commission || 0).toFixed(2)}</td>
+                </tr>`;
+            }).join('');
+        }
+    </script>
+</body>
+</html>
