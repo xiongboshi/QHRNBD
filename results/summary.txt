@@ -1,16 +1,21 @@
 ============================================================
 期货日内波段回测报告
 ============================================================
-策略: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 3, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+策略: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 100, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'use_hour_filter': True, 'hour_trend_bars': 100, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
 初始资金: 100,000.00
-最终权益: 94,684.01
-净盈亏: -2,475.99
-收益率: -2.48%
+最终权益: 98,482.79
+净盈亏: -1,673.21
+收益率: -1.67%
 夏普比率: 0.00
 
-总交易: 224
-胜率: 29.46%
-盈亏比: 0.46
-最大回撤: 5.32%
-总手续费: 1,411.99
+总交易: 144
+胜率: 27.08%
+盈亏比: 0.43
+最大回撤: 1.52%
+总手续费: 906.21
+
+日线方向统计:
+  多头: 95 天
+  空头: 100 天
+  震荡: 25 天
 ============================================================
