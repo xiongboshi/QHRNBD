@@ -1,21 +1,16 @@
 ============================================================
 期货日内波段回测报告
 ============================================================
-策略: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 100, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'use_hour_filter': True, 'hour_trend_bars': 100, 'volume_confirm': False, 'volume_factor': 1.2, 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'use_trailing_stop': False, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2})
+策略: PbxUShapeStrategy(params={'pbx_periods': [4, 6, 9, 13, 18, 24], 'pbx_trend_bars': 100, 'lookback': 8, 'recovery_ratio': 0.3, 'min_drop_pct': 0.002, 'u_shape_smooth': 3, 'use_hour_filter': True, 'hour_trend_bars': 100, 'sweet_zone_tolerance': 0.015, 'use_reversal_candle': False, 'use_adx_filter': True, 'adx_threshold': 25, 'adx_period': 14, 'use_volume_confirm': True, 'volume_factor': 1.2, 'volume_period': 20, 'use_pullback_confirm': True, 'pullback_bars': 2, 'use_slope_validation': True, 'min_touch_count': 3, 'use_time_filter': True, 'avoid_time_ranges': [{'start': '09:00', 'end': '09:15'}, {'start': '13:30', 'end': '13:45'}, {'start': '21:00', 'end': '21:15'}], 'use_rsi_filter': False, 'rsi_oversold': 30, 'rsi_overbought': 70, 'pbx_deviation_max': 0.03, 'use_atr_stop': True, 'atr_period': 14, 'stop_loss_atr': 1.5, 'take_profit_atr': 3.0, 'fixed_stop_loss': 0, 'fixed_contracts': 1, 'use_dynamic_sizing': False, 'risk_per_trade': 0.005, 'max_positions_per_day': 3, 'min_holding_bars': 2, 'volume_confirm': False, 'use_trailing_stop': False})
 初始资金: 100,000.00
-最终权益: 98,482.79
-净盈亏: -1,673.21
-收益率: -1.67%
-夏普比率: 0.00
+最终权益: 99,441.63
+净盈亏: -558.37
+收益率: -0.56%
+夏普比率: -0.29
 
-总交易: 144
-胜率: 27.08%
-盈亏比: 0.43
-最大回撤: 1.52%
-总手续费: 906.21
-
-日线方向统计:
-  多头: 95 天
-  空头: 100 天
-  震荡: 25 天
+总交易: 3
+胜率: 0.00%
+盈亏比: 0.00
+最大回撤: 0.56%
+总手续费: 18.37
 ============================================================

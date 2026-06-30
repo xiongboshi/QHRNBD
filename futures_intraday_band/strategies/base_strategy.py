@@ -64,27 +64,25 @@ class BaseStrategy(ABC):
         pass
 
     # ==========================================
-    # 快捷交易方法
+    # 快捷交易方法（修复版 - 不传 price 和 order_type）
     # ==========================================
 
-    def buy(self, volume: int = 1, price: float = None, order_type: OrderType = OrderType.MARKET):
+    def buy(self, volume: int = 1):
         """开多 / 平空"""
         return self.broker.place_order(
             side=OrderSide.BUY,
             volume=volume,
-            price=price,
-            order_type=order_type,
             symbol=self._get_symbol(),
+            tags=["open_long"],
         )
 
-    def sell(self, volume: int = 1, price: float = None, order_type: OrderType = OrderType.MARKET):
+    def sell(self, volume: int = 1):
         """开空 / 平多"""
         return self.broker.place_order(
             side=OrderSide.SELL,
             volume=volume,
-            price=price,
-            order_type=order_type,
             symbol=self._get_symbol(),
+            tags=["open_short"],
         )
 
     def close_all(self):
@@ -105,4 +103,4 @@ class BaseStrategy(ABC):
         if self.broker.position.symbol:
             return self.broker.position.symbol
         # 从数据中推断
-        return getattr(self, "_symbol", "unknown")
+        return getattr(self, "_symbol", "rb888")
